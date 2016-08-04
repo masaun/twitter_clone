@@ -49,3 +49,7 @@
             .tweet-content
               %p
                 = t.content
+            - if t.favorited_by? current_user
+              = link_to "お気に入りの解除", tweet_favorites_path(t), method: :delete
+            - else
+              = link_to "お気に入りの登録", tweet_favorites_path(t), method: :post
