@@ -2,9 +2,9 @@
   .container
     .navbar-header
       = link_to '#Tsubuyaki', root_url, class: "navbar-brand"
-    
     - if logged_in?
       %ul.nav.navbar-nav
+        %il= link_to "全ツイート一覧", tweets_path
         %li= link_to "ユーザ一覧", user_path
       %ul.nav.navbar-nav.navbar-right
         %li= link_to current_user.name, current_user

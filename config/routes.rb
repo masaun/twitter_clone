@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resource :sessions, only: [:new, :create, :destroy]
   resource :settings, only: [:edit, :update]
   resources :users, only: [:index, :show]
-
+  resources :tweets
+  
   root to: 'registrations#new'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
