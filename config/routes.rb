@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
 
-  get 'users/index'
-
-  get 'users/show'
-
   resource :registrations, only: [:new, :create]
   resource :sessions, only: [:new, :create, :destroy]
-  resources :users, only: [:index, :show]
+  resource :settings, only: [:edit, :update]
+  resources :users, only: [:index, :show] do
+    resources :follows, only: [:create, :destroy]
+    get :favorites, on: :member
+    get :follows, on: :member
+    get :followers, on: :member
+  end
+
+  resources :tweets do
+    resources :favorites, only: [:create, :destroy]
+    get :timeline, on: :collection
+  end
 
   root to: 'registrations#new'
   # The priority is based upon order of creation: first created -> highest priority.
