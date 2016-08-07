@@ -12,10 +12,11 @@ class RegistrationsController < ApplicationController
     else
       render :new
     end
+  end
 
     private
+
     def params_user
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-  end
 end
